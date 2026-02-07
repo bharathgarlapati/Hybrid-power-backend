@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hybrid Power Monitoring Dashboard</title>
+
+<style>
+:root{
+  --bg:#050814;
+  --card:#0c1630;
+  --accent:#38bdf8;
+  --solar:#facc15;
+  --wind:#4ade80;
+  --temp:#fb7185;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:radial-gradient(circle at top, #0f1b3d, #050814);
+  color:#e5e7eb;
+}
+
+/* ===== COLLEGE HEADER ===== */
+.college-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  padding:20px 24px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.logo{
+  width:80px;
+  flex-shrink:0;
+}
+
+.logo img{width:100%}
+
+.college-text{
+  text-align:center;
+}
+
+.college-text h1{
+  margin:0;
+  font-size:42px;
+  letter-spacing:2px;
+  color:#f97316;
+}
+
+.college-text h2{
+  margin:4px 0 0;
+  font-size:20px;
+  color:#cbd5f5;
+}
+
+.college-text p{
+  margin:4px 0 0;
+  font-size:16px;
+  color:#94a3b8;
+}
+
+/* ===== PROJECT INFO ===== */
+.project-info{
+  text-align:center;
+  padding:22px 20px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.project-info .dept{
+  font-size:18px;
+  color:#93c5fd;
+  margin-bottom:8px;
+}
+
+.project-info h3{
+  font-size:24px;
+  margin:8px 0;
+}
+
+.project-info h4{
+  font-size:20px;
+  color:#facc15;
+  margin:6px 0;
+}
+
+.project-info .guide{
+  font-size:18px;
+  color:#cbd5f5;
+}
+
+/* ===== STUDENT DETAILS ===== */
+.student-section{
+  padding:30px 40px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,0.02);
+}
+
+.student-section h3{
+  text-align:center;
+  font-size:22px;
+  margin-bottom:20px;
+}
+
+.student-table{
+  width:80%;
+  margin:auto;
+  border-collapse:collapse;
+}
+
+.student-table th,
+.student-table td{
+  border:1px solid rgba(255,255,255,.3);
+  padding:10px;
+  text-align:center;
+}
+
+.student-table th{
+  background:rgba(56,189,248,0.15);
+  font-weight:700;
+}
+
+/* ===== DASHBOARD TITLE ===== */
+.dashboard-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 36px;
+  font-size:22px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.dashboard-title span{
+  font-size:15px;
+  color:#94a3b8;
+}
+
+/* ===== GRID ===== */
+.grid{
+  padding:36px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.card{
+  background:linear-gradient(180deg,#0f1d3a,#0a1329);
+  border-radius:16px;
+  padding:26px;
+  text-align:center;
+  box-shadow:0 12px 35px rgba(0,0,0,.45);
+}
+
+.card h5{margin:0;font-size:16px}
+
+.value{
+  margin-top:12px;
+  font-size:36px;
+  font-weight:800;
+}
+
+.solar .value{color:var(--solar)}
+.wind .value{color:var(--wind)}
+.temp .value{color:var(--temp)}
+.fan .value{color:#60a5fa}
+
+/* ===== FOOTER ===== */
+.footer{
+  padding:20px 36px;
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+.status{color:#4ade80;font-weight:700}
+
+/* ===== BUTTON ===== */
+.download{
+  display:block;
+  margin:30px auto;
+  padding:14px 30px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(90deg,#22d3ee,#38bdf8);
+  color:#020617;
+  font-weight:800;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- COLLEGE HEADER -->
+<div class="college-header">
+  <div class="logo">
+    <img src="{{ url_for('static', filename='images/left.jpg') }}">
+  </div>
+
+  <div class="college-text">
+    <h1>MAHAVEER</h1>
+    <h2>INSTITUTE OF SCIENCE & TECHNOLOGY</h2>
+    <p>Approved by AICTE, Affiliated to JNTU Hyderabad</p>
+    <p>Visayasapuri, Bandlaguda, Hyderabad – 500005</p>
+  </div>
+
+  <div class="logo">
+    <img src="{{ url_for('static', filename='images/right.jpg') }}">
+  </div>
+</div>
+
+<!-- PROJECT INFO -->
+<div class="project-info">
+  <div class="dept">DEPARTMENT OF EEE · B.Tech IV YEAR</div>
+  <h3>HYBRID POWER GENERATION SYSTEM USING<br>
+      VERTICAL AXIS WIND TURBINE AND SOLAR PANELS</h3>
+  <h4>PROJECT BY BATCH – III</h4>
+  <div class="guide">UNDER THE GUIDANCE OF <b>R. KALYANI</b></div>
+</div>
+
+<!-- STUDENT DETAILS -->
+<div class="student-section">
+<h3>STUDENT DETAILS</h3>
+<table class="student-table">
+<tr><th>SN.</th><th>NAME OF THE STUDENT</th><th>HALLTICKET NO</th></tr>
+<tr><td>01</td><td>G. BHARATH</td><td>23E35A0204</td></tr>
+<tr><td>02</td><td>G. AISHWARYA</td><td>23E35A0205</td></tr>
+<tr><td>03</td><td>J. PRAVEEN</td><td>23E35A0206</td></tr>
+<tr><td>04</td><td>MD. YOUSUF KHAN</td><td>22E31A0203</td></tr>
+</table>
+</div>
+
+<!-- DASHBOARD TITLE -->
+<div class="dashboard-title">
+  <div><b>HYBRID POWER MONITORING</b><br>
+  <span>Real-Time Data Dashboard</span></div>
+  <span>Last Update: <span id="lastUpdate">--</span></span>
+</div>
+
+<!-- GRID -->
+<div class="grid">
+  <div class="card solar"><h5>Solar Voltage</h5><div class="value" id="sv">-- V</div></div>
+  <div class="card solar"><h5>Solar Current</h5><div class="value" id="si">-- A</div></div>
+  <div class="card solar"><h5>Solar Power</h5><div class="value" id="sp">-- W</div></div>
+
+  <div class="card wind"><h5>Wind Voltage</h5><div class="value" id="wv">-- V</div></div>
+  <div class="card wind"><h5>Wind Current</h5><div class="value" id="wi">-- A</div></div>
+  <div class="card wind"><h5>Wind Power</h5><div class="value" id="wp">-- W</div></div>
+
+  <div class="card temp"><h5>Battery Temperature</h5><div class="value" id="bt">-- °C</div></div>
+  <div class="card fan"><h5>Cooling Fan Status</h5><div class="value" id="fan">--</div></div>
+</div>
+
+<button class="download" onclick="window.location.href='/download/pdf'">
+Download PDF Report
+</button>
+
+<div class="footer">
+  <div>System Status: <span class="status">ONLINE</span></div>
+  <div>Connected to Cloud Server</div>
+</div>
+
+<script>
+async function fetchLive(){
+  const r = await fetch("/api/live");
+  const d = await r.json();
+
+  sv.innerText = (d.sv ?? "--")+" V";
+  si.innerText = (d.si ?? "--")+" A";
+  sp.innerText = (d.sp ?? "--")+" W";
+  wv.innerText = (d.wv ?? "--")+" V";
+  wi.innerText = (d.wi ?? "--")+" A";
+  wp.innerText = (d.wp ?? "--")+" W";
+  bt.innerText = (d.bt ?? "--")+" °C";
+  fan.innerText = d.fan ?? "--";
+
+  lastUpdate.innerText = new Date().toLocaleTimeString();
+}
+
+fetchLive();
+setInterval(fetchLive,5000);
+</script>
+
+</body>
+</html>
